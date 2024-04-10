@@ -10,7 +10,9 @@ const Home = () => {
       { color },
     ]);
   };
-
+  const deleteComponent = () => {
+    setAdditionalComponents((prevComponents) => prevComponents.slice(0,-1));
+  }
   return (
     <div className="contenedor">
       <div className="palito"></div>
@@ -33,14 +35,16 @@ const Home = () => {
 
 		{additionalComponents.map((component) => (
         <div
-		  onClick={() => setLightColor(`${component.color}`)}
+		      onClick={() => setLightColor(`${component.color}`)}
           className={`light ${component.color} ${lightColor === `${component.color}` ? "glow" : ""}`}
         ></div>
       	))}
 
       </div>
-      
-      <button onClick={() => addComponent("purple")} className="boton" >Add Purple</button>
+      <div className="botones">
+        <button onClick={() => addComponent("purple")} className="boton" >Add Purple</button>
+        <button onClick={() => deleteComponent()} className="boton" >Delete Purple</button>
+      </div>
       
     </div>
   );
